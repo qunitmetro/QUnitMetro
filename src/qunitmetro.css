@@ -263,5 +263,5 @@
     top: 0px;
     left: 0px;
     z-index: 11;        /* Because 11 is 1 higher than 10 */
-
+    display: none;
 }
