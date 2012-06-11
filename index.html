@@ -31,39 +31,48 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h3>Welcome to GitHub Pages.</h3>
+        <h3>QUnit-Metro</h3>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+<p>QUnit-Metro is a fork of the excellent QUnit JavaScript testing framework that is redesigned and formatted to work with the Windows 8 Metro UI.  With this library, you can write automated unit tests for your JavaScript based Metro apps.</p>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+<p>Getting started testing is easy.  In your JavaScript application's default.html file, add the following button to your AppBar to create the 'Run Tests' button:</p>
+
+<pre><code>
+&lt;button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:'runTestsAppBarCmd', label:'Run Tests', icon:'repair', section: 'global', onclick: QUnitMetro.runTests}"&gt;&lt;button&gt;
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<p>Add a small section to default.html for the unit test report:</p>
+<pre><code>
+    &lt;div id="unitTestContainer"&gt;
+        &lt;div id="qunit"&gt;&lt;/div&gt;
+        &lt;div id="qunit-fixture"&gt;&lt;/div&gt;
+        &lt;button id="closeTests"&gt;Close&lt;/button&gt;
+    &lt;/div&gt;
+</code></pre>
 
-<h3>Designer Templates</h3>
+<p>Add references to the QUnit-Metro scripts in default.html and any other page you wish to run tests in:</p>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+<pre><code>
+    &lt;script src="/js/qunitmetro.js"&gt;&lt;/script&gt;
+    &lt;link href="/css/qunitmetro.css" rel="stylesheet" /&gt;
+</code></pre>
 
-<h3>Rather Drive Stick?</h3>
+<p>Finally, in those pages that you want to test, add a reference to a script file where you will write your tests:</p>
+<pre><code>
+&lt;script src="test.js"&gt;&lt;/script&gt;
+</code></pre>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+          <p>Tests use the same syntax as the original <a href="http://qunitjs.com" target="_blank">QUnit</a></p>
 
-<h3>Authors and Contributors</h3>
+          <p>On the pages with tests, you should now be able to click the 'Run Tests' button in the AppBar and see your tests run.</p>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
       </section>
     </div>
 
     <!-- FOOTER  -->
     <div id="footer_wrap" class="outer">
       <footer class="inner">
-        <p class="copyright">Qunitmetro maintained by <a href="https://github.com/qunitmetro">qunitmetro</a></p>
+        <p class="copyright">QUnit-Metro maintained by <a href="https://github.com/qunitmetro">qunitmetro</a></p>
         <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
