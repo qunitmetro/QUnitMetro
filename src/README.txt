@@ -22,6 +22,4 @@ Note - To match the Metro UI paradigm there is also qunitmetro-dark.css and quni
 Finally, on those pages where you would like to run tests, include a script reference to your test file:
     <script src="test.js"></script>
 
-Note - Testing syntax is slightly modified from the original QUnit, where you would have used test() you now use QUnit.test() as QUnitMetro does not load the testing methods into the global namespace. This applies to all assertions as well. 
-
 On those pages that contain tests, you should be able to access the AppBar in your app, and click the 'Run Tests' button to run your unit tests.
