@@ -1,4 +1,4 @@
-v0.2.0 - 6/10/2012
+v0.3.0 - 6/21/2012
 
 Thank you for choosing to install QUnit-Metro.  This initial release should get you started with writing simple unit tests for your WinJS Metro applications.
 
@@ -9,13 +9,15 @@ In the default.htm page, add this container for the unit test results:
     <div id="unitTestContainer">
         <div id="qunit"></div>
         <div id="qunit-fixture"></div>
-        <button id="closeTests">Close</button>
+        <button id="closeTests" data-win-options="{ onclick: QUnitMetro.closeResults}">Close</button>
     </div>
 
 
 Next, add references to the QUnit-Metro script and css in each page of your app:
     <script src="/js/qunitmetro.js"></script>
     <link href="/css/qunitmetro.css" rel="stylesheet" />
+
+Note - To match the Metro UI paradigm there is also qunitmetro-dark.css and qunitmetro-light.css
 
 Finally, on those pages where you would like to run tests, include a script reference to your test file:
     <script src="test.js"></script>
