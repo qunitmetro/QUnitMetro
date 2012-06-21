@@ -1,0 +1,251 @@
+﻿/**
+ * QUnit v1.5.0 - A JavaScript Unit Testing Framework
+ *
+ * http://docs.jquery.com/QUnit
+ *
+ * Copyright (c) 2012 John Resig, JÃ¶rn Zaefferer
+ * Dual licensed under the MIT (MIT-LICENSE.txt)
+ * or GPL (GPL-LICENSE.txt) licenses.
+ */
+
+/** Font Family and Sizes */
+
+#qunit-testrunner-toolbar, #qunit-userAgent, #qunit-testresult, #qunit-tests li { font-size: small; }
+#qunit-tests { font-size: smaller; }
+
+
+/** Resets */
+
+#qunit-tests, #qunit-tests ol, #qunit-header, #qunit-banner, #qunit-userAgent, #qunit-testresult {
+	margin: 0;
+	padding: 0;
+}
+
+
+/** Header */
+
+#qunit-header {
+	padding: 0.5em 0 0.5em 1em;
+
+	color: #000;
+	background-color: #999;
+
+	font-size: 1.5em;
+	line-height: 1em;
+	font-weight: normal;
+}
+
+#qunit-header a {
+	text-decoration: none;
+	color: #000;
+}
+
+#qunit-header a:hover,
+#qunit-header a:focus {
+	color: #fff;
+}
+
+#qunit-header label {
+	display: inline-block;
+}
+
+#qunit-banner {
+	height: 5px;
+}
+
+#qunit-testrunner-toolbar {
+	padding: 0.5em 0 0.5em 2em;
+	color: #FFF;
+	background-color: #000;
+}
+
+#qunit-userAgent {
+	padding: 0.5em 0 0.5em 2.5em;
+	background-color: #000;
+	color: #fff;
+	text-shadow: rgba(0, 0, 0, 0.5) 2px 2px 1px;
+}
+
+
+/** Tests: Pass/Fail */
+
+#qunit-tests {
+	list-style-position: inside;
+    overflow-y: scroll;
+    max-height: 300px;
+}
+
+#qunit-tests li {
+	padding: 0.4em 0.5em 0.4em 2.5em;
+	border-bottom: 2px solid #fff;
+	list-style-position: inside;
+}
+
+#qunit-tests.hidepass li.pass, #qunit-tests.hidepass li.running  {
+	display: none;
+}
+
+#qunit-tests li strong {
+	cursor: pointer;
+}
+
+#qunit-tests li a {
+	padding: 0.5em;
+	color: #c2ccd1;
+	text-decoration: none;
+}
+#qunit-tests li a:hover,
+#qunit-tests li a:focus {
+	color: #000;
+}
+
+#qunit-tests ol {
+	margin-top: 0.5em;
+	padding: 0.5em;
+
+	background-color: #fff;
+
+	box-shadow: inset 0px 2px 13px #999;
+	-moz-box-shadow: inset 0px 2px 13px #999;
+	-webkit-box-shadow: inset 0px 2px 13px #999;
+}
+
+#qunit-tests table {
+	border-collapse: collapse;
+	margin-top: .2em;
+}
+
+#qunit-tests th {
+	text-align: right;
+	vertical-align: top;
+	padding: 0 .5em 0 0;
+}
+
+#qunit-tests td {
+	vertical-align: top;
+}
+
+#qunit-tests pre {
+	margin: 0;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+#qunit-tests del {
+	background-color: #e0f2be;
+	color: #374e0c;
+	text-decoration: none;
+}
+
+#qunit-tests ins {
+	background-color: #ffcaca;
+	color: #500;
+	text-decoration: none;
+}
+
+/*** Test Counts */
+
+#qunit-tests b.counts                       { color: #FFF; }
+#qunit-tests b.passed                       { color: #C6E746; }
+#qunit-tests b.failed                       { color: #d93030; }
+
+#qunit-tests li li {
+	margin: 0.5em;
+	padding: 0.4em 0.5em 0.4em 0.5em;
+	background-color: #fff;
+	border-bottom: none;
+	list-style-position: inside;
+}
+
+/*** Passing Styles */
+
+#qunit-tests li li.pass {
+	color: #5E740B;
+	background-color: #fff;
+	border-left: 26px solid #C6E746;
+}
+
+#qunit-tests .pass                          { color: #528CE0; background-color: #000; }
+#qunit-tests .pass .test-name               { color: #366097; }
+
+#qunit-tests .pass .test-actual,
+#qunit-tests .pass .test-expected           { color: #999999; }
+
+#qunit-banner.qunit-pass                    { background-color: #C6E746; }
+
+/*** Failing Styles */
+
+#qunit-tests li li.fail {
+	color: #710909;
+	background-color: #fff;
+	border-left: 26px solid #EE5757;
+	white-space: pre;
+}
+
+#qunit-tests > li:last-child {
+}
+
+#qunit-tests .fail                          { color: #000000; background-color: #EE5757; }
+#qunit-tests .fail .test-name,
+#qunit-tests .fail .module-name             { color: #000000; }
+
+#qunit-tests .fail .test-actual             { color: #EE5757; }
+#qunit-tests .fail .test-expected           { color: green;   }
+
+#qunit-banner.qunit-fail                    { background-color: #EE5757; }
+
+
+/** Result */
+
+#qunit-testresult {
+	padding: 0.5em 0.5em 0.5em 2.5em;
+
+	color: #FFF;
+	background-color: #000;
+
+	border-bottom: 2px solid white;
+}
+#qunit-testresult .module-name {
+	font-weight: bold;
+}
+
+/** Fixture */
+
+#qunit-fixture {
+	position: absolute;
+	top: -10000px;
+	left: -10000px;
+	width: 1000px;
+	height: 1000px;
+}
+
+#closeTests {
+    
+    float: right;
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
+#runTests {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAqCAIAAABOVI4xAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwgAADsIBFShKgAAAABp0RVh0U29mdHdhcmUAUGFpbnQuTkVUIHYzLjUuMTAw9HKhAAADXklEQVRYR+2WO0srQRSAo16vT0SjoBh8FIJio4WkiGCXJmDhD1CwMAg2YmdhZypNIRaCiqKNjWAjaUREkHQJNio+EYtABBHFtybeL3uWEHKzyWZXY+NXLPuYnW/OmTOza/n8IX7FOeNXbICtra1AIPDx8aFe68OseGlpqbq6urGx0ePx3N7eqnd1YEq8u7tbWlpaUFDwV6Gvr+/g4EB9lgnj4qurK5vNlp+f/0cBPbS3t+/s7OhJu0Hx29ub2+0uLCxEnJeXh5ITi8XCeUNDw8bGBg3UphoYFD88PIyMjJBnYhU9VhkE1NbWLi8vp3cbT/X9/f3k5GR5ebmEK24RMxqr1To3N/f+/q62/g/j4mg0Skxerxc3QaNHKYPghGNlZeXs7KxW3MbFgPvx8XF4eJgQMcWtgrinpqZoo76QgFkxHB4eMqmxylZAL8ggKioqFhYWqHNaqq8pmBUzizMzMyUlJSgxiQyrRMysc97U1MT6TlpjpuY4Eolsbm7W1NRIWWFiGxGZMoZY8rlTVlbm8/mkfTxuI2Jell6Ojo7YMTCJuLe3d35+vrOzEyWXMgLo6em5vr6WVzhKJ1mLFWmMcDjsdDrjAs4vLy/JJzva0NAQUUoOHA7H6ekp9ynvxJk2KGYDGRwclHnF2tXVRfTyiDaU8crKSnNzs8vlOj8/5yaxIpanQnZipecoA2frKC4uJiasLS0twWAwaa+gDQUVCoU4wZoYq5C1mF74FLJIJMN8J/gqJHUqcJPRcEz5NDsxA6c+6+rqZP6qqqrW19fT7IvAQEG9SECvmFHz/v7+fmtrq1hJ9fT09Ovra8qAMpJZrKQqBsVpt9tRApvz6OgoRcR9tV2WZBZLoigTFgxKppZi5mfj5uYmZQ51oiviu7u7gYEBopRV29HRcXZ2ZjhWIZ2YgOidfI6NjRUVFUmSKWO/35++oPSgKZaV9/T0JEsWJYuH/WhtbS1pKzBGajH9wsvLC38w/N9IGbPdT0xMPD8/m7eCppg888/GH4yS4Bj9/f38OX+JFTRTvb29XV9fL0qS3N3dfXFxEcvDt4pPTk7a2trwkWSgoPb29r7QCpoRM51iZVteXV01s2RToimGxcVFrOPj41RZTsVwfHxMQX25FTKIv49fcc74IfHn5z9B212Gm18PagAAAABJRU5ErkJggg==) 
+    top left no-repeat;
+    height: 42px;
+    width: 40px;
+    display: block;
+    float: right;
+    margin: 20px;
+}
+#unitTestContainer {
+
+    width: 80%;
+    height: 80%;
+    margin: 5%;
+
+    border: 2px solid white;
+    background-color: #000;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 11;        /* Because 11 is 1 higher than 10 */
+    display: none;
+}
