@@ -17,6 +17,8 @@
   </metadata>
   <files>
     <file src="..\src\qunitmetro.css" target="content\css\qunitmetro.css" />
+    <file src="..\src\qunitmetro-dark.css" target="content\css\qunitmetro-dark.css" />
+    <file src="..\src\qunitmetro-light.css" target="content\css\qunitmetro-light.css" />
     <file src="..\src\qunitmetro.js" target="content\js\qunitmetro.js" />
     <file src="..\src\README.txt" target="content\README.txt" />
   </files>

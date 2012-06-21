@@ -3,6 +3,11 @@
  *
  * http://qunitmetro.github.com
  *
+ * Copyright (c) 2012 Jason A. Worley
+ * Dual licensed under the MIT (MIT-LICENSE.txt)
+ * or GPL (GPL-LICENSE.txt) licenses.
+ *
+ * Based on QUnitMetro
  * Copyright (c) 2012 Jeffrey T. Fritz
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * or GPL (GPL-LICENSE.txt) licenses.
@@ -19,11 +24,12 @@
     WinJS.Namespace.define("QUnitMetro", {
 
         runTests: WinJS.Utilities.markSupportedForProcessing(function () {
-            QUnit.init();
-            QUnit.load();
-            RunTests();
             QUnit.start();
             document.getElementById("unitTestContainer").style.display = "block";
+        }),
+
+        closeResults: WinJS.Utilities.markSupportedForProcessing(function () {
+            document.getElementById("unitTestContainer").style.display = "none";
         })
 
     });
@@ -1700,6 +1706,8 @@
     if (typeof exports !== "undefined" || typeof require !== "undefined") {
         extend(exports, QUnit);
     }
+
+    //QUnit.init();
 
     // get at whatever the global object is, like window in browsers
 }((function () { return this; }.call())));
