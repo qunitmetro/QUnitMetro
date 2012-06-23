@@ -1,5 +1,5 @@
 ﻿/**
- * QUnit-Metro v0.2.0 - A Unit Testing Framework based on QUnit for WinJS Metro applications
+ * QUnit-Metro v0.3.0 - A Unit Testing Framework based on QUnit for WinJS Metro applications
  *
  * http://qunitmetro.github.com
  *
@@ -18,6 +18,7 @@
  * or GPL (GPL-LICENSE.txt) licenses.
  */
 
+// Metro startup
 (function () {
 
     // Define namespace to connect to AppBar
@@ -33,6 +34,29 @@
         })
 
     });
+
+    // Allocate the container
+    if (document.body) {
+        var container = document.createElement("div");
+        container.setAttribute("id", "unitTestContainer");
+        container.innerHTML = window.toStaticHTML("<div id='qunit'/><div id='qunit-fixture'/>");
+        var closeBtn = document.createElement("button");
+        closeBtn.setAttribute("id", "closeTests");
+        closeBtn.textContent = "Close";
+        container.appendChild(closeBtn);
+        document.body.appendChild(container);
+        document.getElementById("closeTests").attachEvent("onclick", function () {
+            document.getElementById("unitTestContainer").style.display = "none";
+        });
+
+        if (document.getElementById("appbar")) {
+            var runBtn = document.createElement("button");
+            runBtn.setAttribute("data-win-control", "WinJS.UI.AppBarCommand");
+            runBtn.setAttribute("data-win-options", "{id:'runTestsAppBarCmd', label:'Run Tests', icon:'repair', section: 'global', onclick: QUnitMetro.runTests}");
+            document.getElementById("appbar").appendChild(runBtn);
+        }
+
+    }
 
 })();
 
@@ -66,12 +90,6 @@
     };
     Test.prototype = {
         init: function () {
-
-            if (QUnit.id("closeTests")) {
-                document.getElementById("closeTests").attachEvent("onclick", function () {
-                    document.getElementById("unitTestContainer").style.display = "none";
-                });
-            }
 
             var tests = id("qunit-tests");
             if (tests) {
