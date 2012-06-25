@@ -1,10 +1,11 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
-    <version>0.2.0</version>
+    <version>0.3.0</version>
     <authors>Jeffrey T. Fritz</authors>
     <owners />
     <licenseUrl>https://raw.github.com/jquery/jquery/master/GPL-LICENSE.txt</licenseUrl>
+    <projectUrl>http://qunitmetro.github.com/QUnitMetro/</projectUrl>
     <id>QUnit-Metro</id>
     <title />
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -16,9 +17,9 @@
     <tags>javascript, winjs, qunit, test</tags>
   </metadata>
   <files>
-    <file src="..\src\qunitmetro.css" target="content\css\qunitmetro.css" />
     <file src="..\src\qunitmetro-dark.css" target="content\css\qunitmetro-dark.css" />
     <file src="..\src\qunitmetro-light.css" target="content\css\qunitmetro-light.css" />
+    <file src="..\src\qunitmetro.css" target="content\css\qunitmetro.css" />
     <file src="..\src\qunitmetro.js" target="content\js\qunitmetro.js" />
     <file src="..\src\README.txt" target="content\README.txt" />
   </files>
