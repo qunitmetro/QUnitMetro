@@ -34,30 +34,37 @@
         })
 
     });
+   
+    var app = WinJS.Application;
+    var activation = Windows.ApplicationModel.Activation;
 
-    // Allocate the container
-    if (document.body) {
-        var container = document.createElement("div");
-        container.setAttribute("id", "unitTestContainer");
-        container.innerHTML = window.toStaticHTML("<div id='qunit'/><div id='qunit-fixture'/>");
-        var closeBtn = document.createElement("button");
-        closeBtn.setAttribute("id", "closeTests");
-        closeBtn.textContent = "Close";
-        container.appendChild(closeBtn);
-        document.body.appendChild(container);
-        document.getElementById("closeTests").attachEvent("onclick", function () {
-            document.getElementById("unitTestContainer").style.display = "none";
-        });
+    app.addEventListener("activated", function (args) {
+        if (args.detail.kind == activation.ActivationKind.launch) {
+            if (QUnit.config.buildResultsUI &&
+                !document.getElementById("unitTestContainer")) {
+                var container = document.createElement("div");
+                container.setAttribute("id", "unitTestContainer");
+                container.innerHTML = window.toStaticHTML("<div id='qunit'/><div id='qunit-fixture'/>");
+                var closeBtn = document.createElement("button");
+                closeBtn.setAttribute("id", "closeTests");
+                closeBtn.textContent = "Close";
+                container.appendChild(closeBtn);
+                document.body.appendChild(container);
+                document.getElementById("closeTests").attachEvent("onclick", function () {
+                    document.getElementById("unitTestContainer").style.display = "none";
+                });
 
-        if (document.getElementById("appbar")) {
-            var runBtn = document.createElement("button");
-            runBtn.setAttribute("data-win-control", "WinJS.UI.AppBarCommand");
-            runBtn.setAttribute("data-win-options", "{id:'runTestsAppBarCmd', label:'Run Tests', icon:'repair', section: 'global', onclick: QUnitMetro.runTests}");
-            document.getElementById("appbar").appendChild(runBtn);
+                var appBar = document.querySelector("[data-win-control='WinJS.UI.AppBar']");
+                if (!!appBar) {
+                    var runBtn = document.createElement("button");
+                    runBtn.setAttribute("data-win-control", "WinJS.UI.AppBarCommand");
+                    runBtn.setAttribute("data-win-options", "{id:'runTestsAppBarCmd', label:'Run Tests', icon:'repair', section: 'global', onclick: QUnitMetro.runTests}");
+                    appBar.appendChild(runBtn);
+                }
+            }
+            args.setPromise(WinJS.UI.processAll());
         }
-
-    }
-
+    });
 })();
 
 (function (window) {
@@ -535,6 +542,9 @@
 
         // by default, modify document.title when suite is done
         altertitle: true,
+
+        // by default, build the DOM elements to display test results
+        buildResultsUI: true,
 
         urlConfig: ['noglobals', 'notrycatch'],
 
