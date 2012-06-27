@@ -1,4 +1,4 @@
-v0.2.2 - 6/23/2012
+v0.3.1 - 6/27/2012
 
 Thank you for choosing to install QUnit-Metro.  This initial release should get you started with writing simple unit tests for your WinJS Metro applications.
 
