@@ -34,30 +34,37 @@
         })
 
     });
+   
+    var app = WinJS.Application;
+    var activation = Windows.ApplicationModel.Activation;
 
-    // Allocate the container
-    if (document.body) {
-        var container = document.createElement("div");
-        container.setAttribute("id", "unitTestContainer");
-        container.innerHTML = window.toStaticHTML("<div id='qunit'/><div id='qunit-fixture'/>");
-        var closeBtn = document.createElement("button");
-        closeBtn.setAttribute("id", "closeTests");
-        closeBtn.textContent = "Close";
-        container.appendChild(closeBtn);
-        document.body.appendChild(container);
-        document.getElementById("closeTests").attachEvent("onclick", function () {
-            document.getElementById("unitTestContainer").style.display = "none";
-        });
+    app.addEventListener("activated", function (args) {
+        if (args.detail.kind == activation.ActivationKind.launch) {
+            if (QUnit.config.buildResultsUI &&
+                !document.getElementById("unitTestContainer")) {
+                var container = document.createElement("div");
+                container.setAttribute("id", "unitTestContainer");
+                container.innerHTML = window.toStaticHTML("<div id='qunit'/><div id='qunit-fixture'/>");
+                var closeBtn = document.createElement("button");
+                closeBtn.setAttribute("id", "closeTests");
+                closeBtn.textContent = "Close";
+                container.appendChild(closeBtn);
+                document.body.appendChild(container);
+                document.getElementById("closeTests").attachEvent("onclick", function () {
+                    document.getElementById("unitTestContainer").style.display = "none";
+                });
 
-        if (document.getElementById("appbar")) {
-            var runBtn = document.createElement("button");
-            runBtn.setAttribute("data-win-control", "WinJS.UI.AppBarCommand");
-            runBtn.setAttribute("data-win-options", "{id:'runTestsAppBarCmd', label:'Run Tests', icon:'repair', section: 'global', onclick: QUnitMetro.runTests}");
-            document.getElementById("appbar").appendChild(runBtn);
+                var appBar = document.querySelector("[data-win-control='WinJS.UI.AppBar']");
+                if (!!appBar) {
+                    var runBtn = document.createElement("button");
+                    runBtn.setAttribute("data-win-control", "WinJS.UI.AppBarCommand");
+                    runBtn.setAttribute("data-win-options", "{id:'runTestsAppBarCmd', label:'Run Tests', icon:'repair', section: 'global', onclick: QUnitMetro.runTests}");
+                    appBar.appendChild(runBtn);
+                }
+            }
+            args.setPromise(WinJS.UI.processAll());
         }
-
-    }
-
+    });
 })();
 
 (function (window) {
@@ -251,6 +258,14 @@
                 a.innerHTML = window.toStaticHTML("Rerun");
                 a.href = QUnit.url({ filter: getText([b]).replace(/\([^)]+\)$/, "").replace(/(^\s*|\s*$)/g, "") });
 
+                addEvent(a, "click", function (event) {
+                    QUnit.stop();
+                    QUnit.config.filter = getText([b]).replace(/\([^)]+\)$/, "").replace(/(^\s*|\s*$)/g, "");
+                    QUnit.start();
+                    event.preventDefault();
+                    return false;
+                });
+
                 addEvent(b, "click", function () {
                     var next = b.nextSibling.nextSibling,
 					display = next.style.display;
@@ -262,9 +277,9 @@
                     if (target.nodeName.toLowerCase() == "span" || target.nodeName.toLowerCase() == "b") {
                         target = target.parentNode;
                     }
-                    if (window.location && target.nodeName.toLowerCase() === "strong") {
-                        window.location = QUnit.url({ filter: getText([target]).replace(/\([^)]+\)$/, "").replace(/(^\s*|\s*$)/g, "") });
-                    }
+                    QUnit.stop();
+                    QUnit.config.filter = getText([b]).replace(/\([^)]+\)$/, "").replace(/(^\s*|\s*$)/g, "");
+                    QUnit.start();
                 });
 
                 li = id(this.id);
@@ -535,6 +550,9 @@
 
         // by default, modify document.title when suite is done
         altertitle: true,
+
+        // by default, build the DOM elements to display test results
+        buildResultsUI: true,
 
         urlConfig: ['noglobals', 'notrycatch'],
 
@@ -815,7 +833,7 @@
         for (var i = 0, val; i < len; i++) {
             val = config.urlConfig[i];
             config[val] = QUnit.urlParams[val];
-            urlConfigHtml += '<label><input name="' + val + '" type="checkbox"' + (config[val] ? ' checked="checked"' : '') + '>' + val + '</label>';
+            urlConfigHtml += '<label><input id="' + val + '" type="checkbox"' + (config[val] ? ' checked="checked"' : '') + '>' + val + '</label>';
         }
 
         var userAgent = id("qunit-userAgent");
@@ -828,9 +846,20 @@
 
             banner.innerHTML = window.toStaticHTML('<a href="' + QUnit.url({ filter: undefined }) + '"> ' + banner.innerHTML + '</a> ' + urlConfigHtml);
             addEvent(banner, "change", function (event) {
-                var params = {};
-                params[event.target.name] = event.target.checked ? true : undefined;
-                window.location = QUnit.url(params);
+                //var params = {};
+                //params[event.target.id] = event.target.checked ? true : undefined;
+                //window.location = QUnit.url(params);
+                QUnit.stop();
+                QUnit.config[event.target.id] = event.target.checked;
+                QUnit.start();
+            });
+            var appName = banner.getElementsByTagName("a")[0];
+            addEvent(appName, "click", function (event) {
+                QUnit.stop();
+                QUnit.config.filter = "";
+                QUnit.start();
+                event.preventDefault();
+                return false;
             });
         }
 
