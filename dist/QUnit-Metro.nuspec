@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
-    <version>0.3.1</version>
+    <version>0.4.0</version>
     <authors>Jeffrey T. Fritz</authors>
     <owners />
     <licenseUrl>https://raw.github.com/jquery/jquery/master/GPL-LICENSE.txt</licenseUrl>
@@ -11,7 +11,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A fork of the QUnit javascript unit test framework that has been redesigned to work exclusively with WinJS bindings in Windows 8.</description>
     <summary>A javascript unit test framework for Metro WinJS apps</summary>
-    <releaseNotes>Initial release - requires some effort to include on pages you would like to test</releaseNotes>
+    <releaseNotes>Now autodetecting an loading test script files.  No changes are needed to individual HTML files</releaseNotes>
     <copyright>(c) 2012 - Jeffrey T. Fritz</copyright>
     <language>en-US</language>
     <tags>javascript, winjs, qunit, test</tags>
