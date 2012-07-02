@@ -50,12 +50,11 @@
 </code></pre>
 
 
-<p>Finally, in those pages that you want to test, add a reference to a script file where you will write your tests.  We recommend writing a single 'test.js' file in the 'pages' folder
-    of the page you are testing.
+<p>Finally, in those pages that you want to test, add a reference to a script file where you will write your tests.  Write a single 'test.js' file in the 'pages' folder
+    of the page you are testing.  There is no need to specify this file in any HTML, QUnit-Metro will find it and load it appropriately when you navigate to that page in
+    your app.
 </p>
-<pre><code>
-&lt;script src="test.js"&gt;&lt;/script&gt;
-</code></pre>
+
 
           <p>Tests use the same syntax as the original <a href="http://qunitjs.com" target="_blank">QUnit</a></p>
 
