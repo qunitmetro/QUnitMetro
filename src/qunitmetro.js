@@ -3,12 +3,8 @@
  *
  * http://qunitmetro.github.com
  *
- * Copyright (c) 2012 Jason A. Worley
- * Dual licensed under the MIT (MIT-LICENSE.txt)
- * or GPL (GPL-LICENSE.txt) licenses.
- *
- * Based on QUnitMetro
- * Copyright (c) 2012 Jeffrey T. Fritz
+ * QUnitMetro
+ * Copyright (c) 2012 Jeffrey T. Fritz, Jason A. Worley
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * or GPL (GPL-LICENSE.txt) licenses.
  *
@@ -26,11 +22,17 @@
 
         runTests: WinJS.Utilities.markSupportedForProcessing(function () {
             QUnit.start();
-            document.getElementById("unitTestContainer").style.display = "block";
+            var contain = document.getElementById("unitTestContainer");
+            if (contain) {
+                contain.style.display = "block";
+            }
         }),
 
         closeResults: WinJS.Utilities.markSupportedForProcessing(function () {
-            document.getElementById("unitTestContainer").style.display = "none";
+            var contain = document.getElementById("unitTestContainer");
+            if (contain) {
+                contain.style.display = "none";
+            }
         }),
 
         autoLoadTests: function (e) {
