@@ -1,4 +1,4 @@
 QUnitMetro
 ==========
 
-The home of the QUnit-Metro testing framework
+The home of the QUnitMetro testing framework

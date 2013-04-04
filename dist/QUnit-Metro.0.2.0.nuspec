@@ -5,7 +5,7 @@
     <authors>Jeffrey T. Fritz</authors>
     <owners />
     <licenseUrl>https://raw.github.com/jquery/jquery/master/GPL-LICENSE.txt</licenseUrl>
-    <id>QUnit-Metro</id>
+    <id>QUnitMetro</id>
     <title />
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A fork of the QUnit javascript unit test framework that has been redesigned to work exclusively with WinJS bindings in Windows 8.</description>

@@ -1,5 +1,5 @@
 ﻿/**
- * QUnit-Metro v0.2.0 - A Unit Testing Framework based on QUnit for WinJS Metro applications
+ * QUnitMetro v0.2.0 - A Unit Testing Framework based on QUnit for WinJS Metro applications
  *
  * http://qunitmetro.github.com
  *
