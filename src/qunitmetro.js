@@ -1,4 +1,4 @@
-﻿/**
+/**
  * QUnit-Metro v0.4.0 - A Unit Testing Framework based on QUnit for WinJS Metro applications
  *
  * http://qunitmetro.github.com
@@ -64,7 +64,7 @@
                 closeBtn.textContent = "Close";
                 container.appendChild(closeBtn);
                 document.body.appendChild(container);
-                document.getElementById("closeTests").attachEvent("onclick", function () {
+                closeBtn.addEventListener("click", function () {
                     document.getElementById("unitTestContainer").style.display = "none";
                 });
 
@@ -76,6 +76,7 @@
                     appBar.appendChild(runBtn);
                 }
             }
+            QUnit.load();
             args.setPromise(WinJS.UI.processAll());
         }
     });
@@ -112,11 +113,7 @@
         this.async = async;
         this.callback = callback;
         this.assertions = [];
-        this.testId = ++Test.count;
     };
-    
-    Test.count = 0;
-    
     Test.prototype = {
         init: function () {
 
@@ -160,8 +157,7 @@
 
             runLoggingCallbacks('testStart', QUnit, {
                 name: this.testName,
-                module: this.module,
-                id: this.testId
+                module: this.module
             });
 
             // allow utility functions to access the current test environment
@@ -328,7 +324,6 @@
                 name: this.testName,
                 module: this.module,
                 failed: bad,
-                id: this.testId,
                 passed: this.assertions.length - bad,
                 total: this.assertions.length
             });
@@ -646,8 +641,6 @@
                 queue: [],
                 semaphore: 0
             });
-            
-            Test.count = 0;
 
             var qunit = id("qunit");
 
@@ -937,7 +930,7 @@
     };
 
     //$().ready(QUnit.load);
-    addEvent(window, "load", QUnit.load);
+    //addEvent(window, "load", QUnit.load);
 
     // addEvent(window, "error") gives us a useless event object
     window.onerror = function (message, file, line) {
